@@ -1,0 +1,5 @@
+databaseChangeLog:
+  # Initial schema including
+  - include:
+      file: create-schema.sql
+      relativeToChangelogFile: true

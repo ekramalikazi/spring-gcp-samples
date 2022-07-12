@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    driver-class-name: com.google.cloud.spanner.jdbc.JdbcDriver
+    url: jdbc:cloudspanner:/projects/test-cloud-dev/instances/ekram-test/databases/orders
+    hikari:
+      connection-test-query: SELECT 1
+      max-lifetime: 600000 #10 minutes wait time
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: com.google.cloud.spanner.hibernate.SpannerDialect
+    generate-ddl: false
+    show-sql: true
+    database-platform: com.google.cloud.spanner.hibernate.SpannerDialect
+  liquibase:
+    enabled: false
+    change-log: db/changelog/changelog-master.yaml
+
+logging:
+  level:
+    "liquibase": info
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    tags-sorter: alpha
+
+---
+spring:
+  liquibase:
+    enabled: true
+  config:
+    activate:
+      on-profile: liquibase

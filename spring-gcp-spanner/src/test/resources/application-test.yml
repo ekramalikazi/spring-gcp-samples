@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.google.cloud.spanner.jdbc.JdbcDriver
+    url: jdbc:cloudspanner://localhost:9010/projects/test-project/instances/test-instance/databases/testdb;autoConfigEmulator=true
+    hikari:
+      connection-test-query: SELECT 1
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: com.google.cloud.spanner.hibernate.SpannerDialect
+    generate-ddl: false
+    show-sql: true
+    database-platform: com.google.cloud.spanner.hibernate.SpannerDialect
+  liquibase:
+    enabled: true
+    change-log: db/changelog/changelog-master.yaml
