@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: spring-gcp-pubsub
+
+
+pubsub:
+  topic:
+    name: ekram-example-topic-us-west1
+  subscription:
+    name: ekram-example-topic-us-west1-subscription

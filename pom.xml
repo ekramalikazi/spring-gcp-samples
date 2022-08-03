@@ -20,6 +20,7 @@
     <modules>
         <module>spring-gcp-datastore</module>
         <module>spring-gcp-spanner</module>
+        <module>spring-gcp-pubsub</module>
     </modules>
 
     <properties>
